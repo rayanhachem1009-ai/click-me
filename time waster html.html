@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click Me Challenge</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s ease;
+      overflow: hidden;
+    }
+    #clickBtn {
+      padding: 20px 40px;
+      font-size: 24px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background-color: #007BFF;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+    #message {
+      font-size: 32px;
+      color: #333;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="clickBtn">Click Me</button>
+  <div id="message">Stop skipping wlee 😤 I’ll tell Micha!</div>
+
+  <script>
+    let clickCount = 0;
+    const btn = document.getElementById('clickBtn');
+    const msg = document.getElementById('message');
+
+    btn.addEventListener('click', () => {
+      clickCount++;
+
+      // Make button slightly bigger each time
+      const scale = 1 + clickCount * 0.01;
+      btn.style.transform = `scale(${scale})`;
+
+      // Change background color
+      document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 80%)`;
+
+      if (clickCount >= 50) {
+        btn.style.display = 'none';
+        msg.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
